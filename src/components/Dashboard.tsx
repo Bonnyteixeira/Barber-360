@@ -383,28 +383,6 @@ export default function Dashboard({ userEmail, onLogout }: DashboardProps) {
                           {!sidebarCollapsed && <span className="truncate">{item.name}</span>}
                         </div>
                       </button>
-
-                      {/* Display sub-buttons if expanded and active */}
-                      {isActive && !sidebarCollapsed && item.subPages && item.subPages.length > 0 && (
-                        <div className="pl-6 border-l border-copper/30 ml-5 py-1 space-y-1 select-none">
-                          {item.subPages.map((subPage) => {
-                            const isSubActive = activeSubTab === subPage.id;
-                            return (
-                              <button
-                                key={subPage.id}
-                                onClick={() => setActiveSubTab(subPage.id)}
-                                className={`w-full text-left py-1 px-2.5 text-[10px] font-mono transition flex items-center justify-between rounded-none cursor-pointer ${
-                                  isSubActive
-                                    ? 'text-copper font-bold bg-copper/10'
-                                    : 'text-gray-500 hover:text-gray-300 hover:bg-graphite-dark/40'
-                                }`}
-                              >
-                                <span className="truncate">▪ {subPage.name}</span>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
                     </div>
                   );
                 })}

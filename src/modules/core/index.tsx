@@ -18,8 +18,7 @@ import ModuleLayout, { SubPageSpec } from '../../components/ModuleLayout';
 
 export const coreRoutes: SubPageSpec[] = [
   { id: 'dono', name: 'Painel do Dono', icon: <Briefcase className="w-3.5 h-3.5" /> },
-  { id: 'barbeiro', name: 'Painel do Barbeiro', icon: <Users className="w-3.5 h-3.5" /> },
-  { id: 'operacoes', name: 'Painel Operations SaaS', icon: <Activity className="w-3.5 h-3.5" /> }
+  { id: 'barbeiro', name: 'Painel do Barbeiro', icon: <Users className="w-3.5 h-3.5" /> }
 ];
 
 export default function CoreModule() {
@@ -214,83 +213,6 @@ export default function CoreModule() {
                     <span>14:00 - 14:30</span>
                     <strong className="text-gray-300">Tratamento de Alinhamento</strong>
                     <span className="text-gray-500">Agendado</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        }
-
-        if (activeSubPageId === 'operacoes') {
-          return (
-            <div className="space-y-6">
-              <div className="bg-amber-500/10 border border-amber-500/20 p-4 font-sans text-xs text-amber-300 leading-relaxed">
-                <strong>[Nível Admin Global]</strong> Esta view é restrita para o time de suporte e gerência do Barber 360. Nela você audita a telemetria agregada de todos os tenants conectados.
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-[#141517] p-4.5 border border-graphite-border">
-                  <span className="text-[10px] text-gray-500 uppercase font-mono block">MRR Consolidado SaaS</span>
-                  <div className="flex justify-between items-center mt-2">
-                    <p className="text-lg font-bold font-mono text-copper">R$ {mrrValue.toLocaleString()}</p>
-                    <div className="flex gap-1">
-                      <button onClick={() => setMrrValue(prev => prev + 299)} className="p-1 bg-graphite-dark hover:bg-copper hover:text-graphite-dark text-[9px] font-mono border border-graphite-border">+</button>
-                      <button onClick={() => setMrrValue(prev => Math.max(0, prev - 299))} className="p-1 bg-graphite-dark hover:bg-copper hover:text-graphite-dark text-[9px] font-mono border border-graphite-border">-</button>
-                    </div>
-                  </div>
-                  <span className="text-[8px] text-gray-500 block mt-1">Somas reais de planos Starter, Pro e Enterprise</span>
-                </div>
-
-                <div className="bg-[#141517] p-4.5 border border-graphite-border">
-                  <span className="text-[10px] text-gray-500 uppercase font-mono block">Tenants Ativos</span>
-                  <div className="flex justify-between items-center mt-2">
-                    <p className="text-lg font-bold font-mono text-gray-200">{activeTenants} Estabelecimentos</p>
-                    <div className="flex gap-1">
-                      <button onClick={() => setActiveTenants(prev => prev + 1)} className="p-1 bg-graphite-dark hover:bg-copper hover:text-graphite-dark text-[9px] font-mono border border-graphite-border">+</button>
-                      <button onClick={() => setActiveTenants(prev => Math.max(0, prev - 1))} className="p-1 bg-graphite-dark hover:bg-copper hover:text-graphite-dark text-[9px] font-mono border border-graphite-border">-</button>
-                    </div>
-                  </div>
-                  <span className="text-[8px] text-gray-500 block mt-1">Multi-tenant com isolamento total de esquemas</span>
-                </div>
-
-                <div className="bg-[#141517] p-4.5 border border-graphite-border">
-                  <span className="text-[10px] text-gray-500 uppercase font-mono block">Inadimplência (Churn)</span>
-                  <p className="text-lg font-bold font-mono text-red-500 mt-1">1.84%</p>
-                  <span className="text-[8px] text-gray-500 block mt-1">Padrão extremamente reduzido</span>
-                </div>
-              </div>
-
-              <div className="border border-graphite-border bg-[#141517] p-5">
-                <h4 className="text-xs font-bold text-gray-200 font-mono uppercase border-b border-graphite-border pb-2 mb-3">Faturamento por Tipo de Plano</h4>
-                <div className="space-y-3.5 text-xs text-gray-400">
-                  <div>
-                    <div className="flex justify-between mb-1 font-mono">
-                      <span>Plano Starter v1 (24 tenants)</span>
-                      <strong>R$ 3.576 /mês</strong>
-                    </div>
-                    <div className="w-full bg-graphite-dark h-1.5 border border-graphite-border">
-                      <div className="bg-copper h-full" style={{ width: '15%' }}></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between mb-1 font-mono">
-                      <span>Plano Pro v2 (104 tenants)</span>
-                      <strong>R$ 15.496 /mês</strong>
-                    </div>
-                    <div className="w-full bg-graphite-dark h-1.5 border border-graphite-border">
-                      <div className="bg-copper h-full" style={{ width: '65%' }}></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between mb-1 font-mono">
-                      <span>Plano Enterprise (20 tenants)</span>
-                      <strong>R$ 5.828 /mês</strong>
-                    </div>
-                    <div className="w-full bg-graphite-dark h-1.5 border border-graphite-border">
-                      <div className="bg-copper h-full" style={{ width: '20%' }}></div>
-                    </div>
                   </div>
                 </div>
               </div>
