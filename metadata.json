@@ -1,0 +1,6 @@
+{
+  "name": "Barber 360 Enterprise",
+  "description": "Plataforma SaaS Multi-Tenant completa com Automação, IA, CRM de Retenção e Inteligência de Negócios para Barbearias.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Barber 360 Enterprise Backend App Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: barber360_api_prod
+    restart: always
+    ports:
+      - "3500:3500"
+    environment:
+      - NODE_ENV=production
+      - BACKEND_PORT=3500
+      - DATABASE_URL=postgres://barber_owner:SuperStrongEnterpriseSecretPass9954@postgres_db:5432/barber360_db
+      - JWT_SECRET=YOUR_PRODUCTION_SECURED_JWT_SECRET_KEY_9988776655
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+
+  # Dedicated Persistent PostgreSQL Client Container
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: barber360_postgres_prod
+    restart: always
+    environment:
+      - POSTGRES_USER=barber_owner
+      - POSTGRES_PASSWORD=SuperStrongEnterpriseSecretPass9954
+      - POSTGRES_DB=barber360_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_production_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U barber_owner -d barber360_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_production_data:
+    driver: local
